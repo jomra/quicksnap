@@ -19,6 +19,8 @@ The client script itself then can be run with only one click. No authentication,
 The person this program was originally developed to help uses Solus, which, AFAIK, doesn't support it.
 ### Why share credentials between end users and screenshot recipients?
 This is easier for everyone. And given that you shouldn't be reusing your passwords, the consequences of a breach are minimal. Further, it is not expected that end users of this tool will try to manage their own account, or even know that credentials exist. Thus, it makes sense to only have one account.
+### Why not use AppImage/Flatpak/Snap?
+Given the utter simplicity of this tool, and the assumption that the installer has the skills requisite to run a simple installation script, at this point running any sort of CI or build process is overkill.
 
 ## Credits
 Icon created by Dall-e
