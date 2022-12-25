@@ -8,15 +8,19 @@ The client script itself then can be run with only one click. No authentication,
 * **No Row-Level-Security setup in Supabase yet**
 * Credentials stored in plaintext, not Freedesktop Secret Store
 
+## Roadmap
+* Use screenshot portal if possible, falling back to scrot (fixes Wayland)
+
 ## Design limitations
 * Screenshots, not screencasts
 * No remote control
 * Linux only
+* Scrot only works on X :(
 
 
 ## Design discussion
-### Why not use screenshot portals?
-The person this program was originally developed to help uses Solus, which, AFAIK, doesn't support it.
+### Why not use the Freedeskrop screenshot portal? 
+The person this program was originally developed to help uses Solus, which, AFAIK, doesn't support it. 
 ### Why share credentials between end users and screenshot recipients?
 This is easier for everyone. And given that you shouldn't be reusing your passwords, the consequences of a breach are minimal. Further, it is not expected that end users of this tool will try to manage their own account, or even know that credentials exist. Thus, it makes sense to only have one account.
 ### Why not use AppImage/Flatpak/Snap?
