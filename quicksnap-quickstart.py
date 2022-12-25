@@ -32,7 +32,7 @@ if os.path.exists("~/.local/share/applications/quicksnap.desktop"):
 urls = [
   "https://raw.githubusercontent.com/jomra/quicksnap/main/client/quicksnap-client.js",
   "https://raw.githubusercontent.com/jomra/quicksnap/main/client/qs-snap.py",
-  "https://raw.githubusercontent.com/jomra/quicksnap/main/client/icon.py"
+  "https://raw.githubusercontent.com/jomra/quicksnap/main/client/icon.png"
 ]
 # Download the files
 for url in urls:
