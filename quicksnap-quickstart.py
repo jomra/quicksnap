@@ -30,11 +30,10 @@ if os.path.exists("~/.local/share/applications/quicksnap.desktop"):
 # Get the latest release from GitHub
 # Not ideal, but works for now. FIXME
 urls = [
-  "https://github.com/jomra/quicksnap/blob/main/client/quicksnap-client.js",
-  "https://github.com/jomra/quicksnap/blob/main/client/qs-snap.py",
-  "https://github.com/jomra/quicksnap/blob/main/client/icon.py"
+  "https://raw.githubusercontent.com/jomra/quicksnap/main/client/quicksnap-client.js",
+  "https://raw.githubusercontent.com/jomra/quicksnap/main/client/qs-snap.py",
+  "https://raw.githubusercontent.com/jomra/quicksnap/main/client/icon.py"
 ]
-
 # Download the files
 for url in urls:
   filename = url.split("/")[-1]
