@@ -1,9 +1,16 @@
-status - pre-alpha
+status - pre-alpha. insecure, ugly, and not robust.
+
 # quicksnap
 
 The app is designed to be extremely simple for end users. To that end, it consists of an installation script, which should be run by you. It stores credentials, ensures dependencies are installed, and 
 
 The client script itself then can be run with only one click. No authentication, preferences, or prompts. This is essential to prevent getting help from being just as difficult as a problem a tech-illiterate end-user is facing.
+
+## Setup
+* Make an account at quicksn.app
+* Ensure npm & scrot are installed
+* Download and run `quicksnap-quickstart.py`
+* [Optional] Pin Quicksn.app to the launcher for easy usage
 
 ## Design limitations
 * Screenshots, not screencasts
