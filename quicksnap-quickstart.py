@@ -61,6 +61,12 @@ connection = secretstorage.dbus_init()
 collection = secretstorage.get_default_collection(connection)
 attributes = {'application': 'Quicksnap', 'email': email}
 
+try:
+  collection.unlock()
+except:
+  print("Failed to unlock collection. Is the keyring unlocked?")
+  exit()
+
 item = collection.create_item('Quicksnap', attributes, password.encode())
 
 connection.close()
