@@ -7,6 +7,7 @@ The app is designed to be extremely simple for end users. To that end, it consis
 The client script itself then can be run with only one click. No authentication, preferences, or prompts. This is essential to prevent getting help from being just as difficult as a problem a tech-illiterate end-user is facing.
 
 ## Setup
+* Only works on Linux computers. Does NOT work on Wayland.
 * Make an account at quicksn.app
 * Ensure npm & scrot are installed
 * Download and run `quicksnap-quickstart.py`
