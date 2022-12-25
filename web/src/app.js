@@ -57,6 +57,10 @@ function load() {
               deleteObject(itemRef).then(() => {
                 // Remove the image from the DOM
                 imgWrapper.removeChild(img);
+                if (imgWrapper.children.length == 0) {
+                  imgWrapper.remove();
+                  showEmptyMessage(content);
+                }
               }).catch((error) => {
                 // TODO
               });
@@ -67,9 +71,14 @@ function load() {
       });
     }
     else {
-      const p = document.createElement("p");
-      p.textContent = "No images found";
-      content.appendChild(p);
+      showEmptyMessage(content);
     }
   });
+}
+
+function showEmptyMessage(parent) {
+  const emptyMessage = document.createElement("span");
+  emptyMessage.classList.add("emptyMessage");
+  emptyMessage.textContent = "No images found.";
+  parent.appendChild(emptyMessage);
 }

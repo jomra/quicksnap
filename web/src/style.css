@@ -18,3 +18,7 @@ hr {
 img {
   max-width: 100%;
 }
+
+.emptyMessage {
+  display: block;
+}
