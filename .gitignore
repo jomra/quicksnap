@@ -1,0 +1,5 @@
+client/node_modules
+client/.vscode
+client/package-lock.json
+web/package-lock.json
+web/node_modules/
