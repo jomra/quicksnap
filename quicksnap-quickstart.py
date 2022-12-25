@@ -72,11 +72,12 @@ item = collection.create_item('Quicksnap', attributes, password.encode())
 connection.close()
 
 # Create .desktop file
-desktop = """[Desktop Entry]
+iconPath = os.path.expanduser("~/.quicksnap/icon.png")
+desktop = f"""[Desktop Entry]
 Name=Quicksn.app
 Comment=Upload screenshots to Quicksn.app
-Exec=node run ~/.quicksnap/quicksnap-client.js
-Icon=~/.quicksnap/icon.png
+Exec=cd ~/.quicksnap && npm run start
+Icon={iconPath}
 Terminal=false
 Type=Application
 Categories=Utility"""
