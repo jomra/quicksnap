@@ -80,6 +80,10 @@ Icon=~/.quicksnap/icon.png
 Terminal=false
 Type=Application
 Categories=Utility"""
+
+if not os.path.exists(os.path.expanduser("~/.local/share/applications")):
+  os.mkdir(os.path.expanduser("~/.local/share/applications"))
+
 with open(os.path.expanduser("~/.local/share/applications/quicksnap.desktop"), "w") as f:
   f.write(desktop)
 
