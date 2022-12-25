@@ -31,6 +31,7 @@ if os.path.exists("~/.local/share/applications/quicksnap.desktop"):
 # Not ideal, but works for now. FIXME
 urls = [
   "https://raw.githubusercontent.com/jomra/quicksnap/main/client/quicksnap-client.js",
+  "https://raw.githubusercontent.com/jomra/quicksnap/main/client/package.json",
   "https://raw.githubusercontent.com/jomra/quicksnap/main/client/qs-snap.py",
   "https://raw.githubusercontent.com/jomra/quicksnap/main/client/icon.png"
 ]
