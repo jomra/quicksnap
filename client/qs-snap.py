@@ -36,7 +36,7 @@ connection.close()
 # Take screenshot
 
 screenshot = subprocess.run(
-    ["scrot", "--file", FILE_PATH],
+    ["scrot", "-p", "--file", FILE_PATH],
     shell=False, capture_output=False
 )
 
