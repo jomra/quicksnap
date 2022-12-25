@@ -48,7 +48,7 @@ deps = subprocess.run(
 
 # Fail gracefully-ish
 if deps.stderr:
-  print("There was a problem. Is NPM installed? Details: " + screenshot.stderr)
+  print("There was a problem. Is NPM installed? Details: " + deps.stderr)
   exit()
 
 
