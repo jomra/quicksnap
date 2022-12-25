@@ -39,12 +39,21 @@ function load() {
   const storageRef = ref(storage, userID + '/');
 
   listAll(storageRef, { maxResults: 5 }).then((res) => {
-    res.items.forEach((itemRef) => {
-      getDownloadURL(itemRef).then((url) => {
-        const img = document.createElement("img");
-        img.src = url;
-        content.appendChild(img);
+    if (res.items.length > 0) {
+      const imgWrapper = document.createElement("section");
+      content.appendChild(imgWrapper);
+      res.items.forEach((itemRef) => {
+        getDownloadURL(itemRef).then((url) => {
+          const img = document.createElement("img");
+          img.src = url;
+          imgWrapper.insertBefore(img, imgWrapper.firstChild);
+        });
       });
-    });
+    }
+    else {
+      const p = document.createElement("p");
+      p.textContent = "No images found";
+      content.appendChild(p);
+    }
   });
 }
