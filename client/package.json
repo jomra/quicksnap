@@ -1,0 +1,16 @@
+{
+  "name": "quicksnap-client",
+  "version": "0.0.1",
+  "description": "Take and upload screenshots to quicksn.app",
+  "main": "qs-snap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node quicksnap-client.js"
+  },
+  "author": "John Sarbak",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "firebase": "^9.15.0"
+  },
+  "type": "module"
+}
