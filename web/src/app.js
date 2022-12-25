@@ -50,6 +50,7 @@ function load() {
         getDownloadURL(itemRef).then((url) => {
           const img = document.createElement("img");
           img.src = url;
+          img.setAttribute("loading", "lazy");
           img.onclick = (e) => {
             let cd = confirm("Delete this image?");
             if (cd) {
