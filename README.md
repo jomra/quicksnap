@@ -1,15 +1,9 @@
+status - pre-alpha
 # quicksnap
 
 The app is designed to be extremely simple for end users. To that end, it consists of an installation script, which should be run by you. It stores credentials, ensures dependencies are installed, and 
 
 The client script itself then can be run with only one click. No authentication, preferences, or prompts. This is essential to prevent getting help from being just as difficult as a problem a tech-illiterate end-user is facing.
-
-## GA blockers
-* **No Row-Level-Security setup in Supabase yet**
-* Credentials stored in plaintext, not Freedesktop Secret Store
-
-## Roadmap
-* Use screenshot portal if possible, falling back to scrot (fixes Wayland)
 
 ## Design limitations
 * Screenshots, not screencasts
