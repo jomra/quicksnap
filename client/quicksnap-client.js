@@ -33,8 +33,6 @@ async function main(data) {
   fileName = output.split("\n")[2];
   filePath = output.split("\n")[3];
 
-  password = "ARTTnJD9DUtvySSX4%%&AQSUxC#L%X33iRp7!%2fvJ^4oWygXK";
-
   // Initialize Firebase Authentication and get a reference to the service
   const auth = getAuth(app);
   let user = null;
@@ -42,7 +40,7 @@ async function main(data) {
   // Sign in with email & password
   // Auth state should never change
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, "ARTTnJD9DUtvySSX4%%&AQSUxC#L%X33iRp7!%2fvJ^4oWygXK");
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
     user = userCredential.user;
   }
   catch (error) {
