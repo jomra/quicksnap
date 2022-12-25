@@ -1,10 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { getStorage, ref, listAll, getDownloadURL, deleteObject } from 'firebase/storage';
 import { firebaseConfig } from "./firebase.js";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+let imageRefs = [];
 
 let userID = null;
 
@@ -22,15 +23,18 @@ onAuthStateChanged(auth, (user) => {
 
 function load() {
   // Add some text
-  heading.textContent = "Logged in";
+  heading.textContent = "Quicksn.app";
 
   // Set up the logout button
   const logoutButton = document.createElement("button");
   logoutButton.textContent = "Logout";
   content.appendChild(logoutButton);
   logoutButton.onclick = async (e) => {
-    const { error } = await supabase.auth.signOut();
-    window.location = "index.html";
+    signOut(auth).then(() => {
+      // Listener will redirect to index.html
+    }).catch((error) => {
+      // TODO.
+    });
   }
 
   // Display all images
@@ -46,6 +50,17 @@ function load() {
         getDownloadURL(itemRef).then((url) => {
           const img = document.createElement("img");
           img.src = url;
+          img.onclick = (e) => {
+            let cd = confirm("Delete this image?");
+            if (cd) {
+              deleteObject(itemRef).then(() => {
+                // Remove the image from the DOM
+                imgWrapper.removeChild(img);
+              }).catch((error) => {
+                // TODO
+              });
+            }
+          }
           imgWrapper.insertBefore(img, imgWrapper.firstChild);
         });
       });
