@@ -5,7 +5,6 @@ import { firebaseConfig } from "./firebase.js";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-let imageRefs = [];
 
 let userID = null;
 
@@ -42,12 +41,33 @@ function load() {
   const storage = getStorage();
   const storageRef = ref(storage, userID + '/');
 
+  // Parallel arrays
+  const downloads = new Array();
+  const imageRefs = new Array();
+
+  // Add a loading message
+  const loadingMessage = document.createElement("section");
+  loadingMessage.classList.add("loadingMessage");
+  const loadingMessageText = document.createElement("span");
+  loadingMessageText.textContent = "Loading...";
+  loadingMessage.appendChild(loadingMessageText);
+
+  content.appendChild(loadingMessage);
+
   listAll(storageRef, { maxResults: 5 }).then((res) => {
     if (res.items.length > 0) {
       const imgWrapper = document.createElement("section");
       content.appendChild(imgWrapper);
       res.items.forEach((itemRef) => {
-        getDownloadURL(itemRef).then((url) => {
+        downloads.push(getDownloadURL(itemRef));
+        imageRefs.push(itemRef);
+      });
+
+      // Display images
+      Promise.all(downloads).then((urls) => {
+        urls.forEach((url, i) => {
+          const itemRef = imageRefs[i];
+          
           const img = document.createElement("img");
           img.src = url;
           img.setAttribute("loading", "lazy");
@@ -68,17 +88,23 @@ function load() {
           }
           imgWrapper.insertBefore(img, imgWrapper.firstChild);
         });
+        loadingMessage.remove();
       });
     }
     else {
+      loadingMessage.remove();
       showEmptyMessage(content);
     }
   });
 }
 
 function showEmptyMessage(parent) {
-  const emptyMessage = document.createElement("span");
+  const emptyMessage = document.createElement("section");
   emptyMessage.classList.add("emptyMessage");
-  emptyMessage.textContent = "No images found.";
+  const markup = `
+    <span>No images found. </span>
+    <a href="app.html">Reload?</a>
+  `;
+  emptyMessage.insertAdjacentHTML("beforeend", markup);
   parent.appendChild(emptyMessage);
 }
