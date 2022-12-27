@@ -18,3 +18,7 @@ hr {
 img {
   max-width: 100%;
 }
+
+img.logo {
+  width: 100px;
+}
