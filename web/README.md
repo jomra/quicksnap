@@ -1,3 +1,4 @@
 To run:
-`npm install`
-`npx parcel run src/*.html`
+```npm install
+npx parcel run src/*.html
+```
