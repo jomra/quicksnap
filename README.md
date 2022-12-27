@@ -4,7 +4,7 @@
 
 The app is designed to be extremely simple for end users. To that end, it consists of an installation script, which should be run by you. It stores credentials, ensures dependencies are installed, and sets up the `.desktop` file.
 
-The client script itself then can be run with only one click. No authentication, preferences, or prompts. This is essential to prevent getting help from being just as difficult as the problem that prompted a tech-illiterate end user to seek it.
+The client script itself then can be run with only one click. No authentication, preferences, or prompts. This makes it much easier for tech-illiterate end users to get help.
 
 ## Setup
 *Only works on Linux computers. Does NOT currently support Wayland.*
