@@ -19,6 +19,13 @@ FILE_PATH = os.path.expanduser("~/.quicksnap/" + FILE_NAME)
 # Get credentials
 connection = secretstorage.dbus_init()
 collection = secretstorage.get_default_collection(connection)
+
+try:
+  collection.unlock()
+except:
+  print("Failed to unlock collection.")
+  exit()
+
 attributes = {'application': 'Quicksnap'}
 items = collection.search_items(attributes)
 
