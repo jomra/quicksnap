@@ -5,14 +5,33 @@
 import subprocess
 import urllib.request
 from base64 import encode
+from shutil import which
 import secretstorage
-import configparser
 import os, sys
 
 print("\nHi there!")
-print("Before using this script, make sure you've created a Quicksn.app account for this user. You can do that at https://quicksn.app.")
-print("⚠️ Please ensure scrot is installed on the system before running this script.")
-print("Quicksn.app is licensed under the Mozilla Public License 2.0. THERE IS NO WARRANTY!\n")
+print("\nBefore using this script, ensure...")
+print("\t* You have created a Quicksn.app account (https://quicksn.app)")
+print("\t* nodejs, npm, and scrot are installed on the system")
+print("\nQuicksn.app is licensed under the Mozilla Public License 2.0. THERE IS NO WARRANTY!\n")
+
+proceed = input("Do you want to proceed with installation? [y/n] ")
+if proceed.lower() != "y":
+  # No need for fancy input validation here. The user can always run the script again if they enter the wrong thing.
+  print("Aborting.")
+  exit()
+
+# Check if nodejs, npm, and scrot are installed
+if not which("node"):
+  print(sys.stderr, "NodeJS is not installed. Please install it before running this script.")
+  exit()
+if not which("npm"):
+  print(sys.stderr, "NPM is not installed. Please install it before running this script.")
+  exit()
+if not which("scrot"):
+  print(sys.stderr, "Scrot is not installed. Please install it before running this script.")
+  exit()
+# TODO: check if secretstorage is available
 
 # Make app directory if it doesn't exist
 
@@ -89,3 +108,6 @@ with open(os.path.expanduser("~/.local/share/applications/quicksnap.desktop"), "
   f.write(desktop)
 
 print("\nDone! You can now run Quicksn.app from your applications menu.\n")
+
+def programExists(program: str) -> bool:
+  return which(program) is not None
