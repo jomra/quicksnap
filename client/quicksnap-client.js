@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
-import { readFileSync } from 'fs';
+import { readFileSync, unlinkSync } from 'fs';
 import { spawn } from 'child_process';
 let email, password, fileName, filePath;
 
@@ -59,7 +59,9 @@ async function main(data) {
 
   uploadBytes(storageRef, file)
     .then((snapshot) => {
-      // Do nothing.
+      // Delete screenshot file
+      unlinkSync(filePath);
+
     }).catch((error) => {
       console.error("Error uploading file: ", error);
     });
