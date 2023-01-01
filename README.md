@@ -13,7 +13,7 @@ The client script itself then can be run with only one click. No authentication,
 3. [Download](https://raw.githubusercontent.com/jomra/quicksnap/main/quicksnap-quickstart.py) and run `quicksnap-quickstart.py`
 4. [Optional] Pin Quicksn.app to the launcher for easy usage
 
-_\* Flameshot is prefered and supports Wayland. Scrot is more likely to be preinstalled and can capture the user's cursor._
+_\*Flameshot is preferred and supports Wayland. Scrot is more likely to be preinstalled and can capture the user's cursor._
 
 ## Design discussion
 
