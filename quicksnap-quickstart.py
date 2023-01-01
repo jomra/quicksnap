@@ -83,7 +83,7 @@ if deps.stderr:
 
 
 # Store credentials
-email = input("Enter email: ")
+email = input("\nEnter email: ")
 password = input("Enter password: ")
 
 # TODO: make sure an item with these attributes doesn't already exist
