@@ -39,14 +39,19 @@ if not which("flameshot") and not which("scrot"):
 
 # TODO: check if secretstorage is available
 
-# Make app directory if it doesn't exist
+# Make app & screenshot directories if they don't exist
 
 directory = os.path.expanduser("~/.quicksnap")
+screenshotDirectory = os.path.expanduser("~/.quicksnap/screenshots")
+
 try:
   os.mkdir(directory)
 except FileExistsError as e:
   print(sys.stderr, "Directory already exists. Did you already run this script?")
   exit()
+
+os.mkdir(screenshotDirectory)
+
 # Make sure .desktop file doesn't exist
 if os.path.exists("~/.local/share/applications/quicksnap.desktop"):
   print(sys.stderr, "Desktop file already exists. Did you already run this script?")

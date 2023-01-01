@@ -15,7 +15,7 @@ if not os.path.exists(os.path.expanduser("~/.quicksnap")):
 
 # Set file name and path
 FILE_NAME = "screenshot-" + str(time.time()) + ".png"
-FILE_PATH = os.path.expanduser("~/.quicksnap/" + FILE_NAME)
+FILE_PATH = os.path.expanduser("~/.quicksnap/screenshots" + FILE_NAME)
 
 # Get credentials
 connection = secretstorage.dbus_init()
