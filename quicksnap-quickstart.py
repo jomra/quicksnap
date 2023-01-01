@@ -12,7 +12,7 @@ import os, sys
 print("\nHi there!")
 print("\nBefore using this script, ensure...")
 print("\t* You have created a Quicksn.app account (https://quicksn.app)")
-print("\t* nodejs, npm, and scrot are installed on the system")
+print("\t* nodejs, npm, and flameshot (or at least scrot) are installed on the system")
 print("\nQuicksn.app is licensed under the Mozilla Public License 2.0. THERE IS NO WARRANTY!\n")
 
 proceed = input("Do you want to proceed with installation? [y/n] ")
@@ -21,16 +21,17 @@ if proceed.lower() != "y":
   print("Aborting.")
   exit()
 
-# Check if nodejs, npm, and scrot are installed
+# Ensure dependencies are installed
 if not which("node"):
   print(sys.stderr, "NodeJS is not installed. Please install it before running this script.")
   exit()
 if not which("npm"):
   print(sys.stderr, "NPM is not installed. Please install it before running this script.")
   exit()
-if not which("scrot"):
-  print(sys.stderr, "Scrot is not installed. Please install it before running this script.")
+if not which("flameshot") and not which("scrot"):
+  print(sys.stderr, "Neither Flameshot nor Scrot is not installed. Please install one (Flameshot prefered) before running this script.")
   exit()
+  
 # TODO: check if secretstorage is available
 
 # Make app directory if it doesn't exist

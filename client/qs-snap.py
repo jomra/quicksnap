@@ -5,6 +5,7 @@
 # Copyright 2022 John Sarbak
 
 import os, sys, secretstorage, time, subprocess
+from shutil import which
 
 # Ensure .quicksnap directory exists. Bonus: this is a good heuristic for whether the user has run quicksnap-quickstart.py
 if not os.path.exists(os.path.expanduser("~/.quicksnap")):
@@ -42,10 +43,20 @@ connection.close()
 
 # Take screenshot
 
-screenshot = subprocess.run(
-    ["scrot", "-p", "--file", FILE_PATH],
+# Try to use flameshot if it's installed
+if which("flameshot"):
+  screenshot = subprocess.run(
+    ["flameshot", "full", "-p", FILE_PATH],
     shell=False, capture_output=False
-)
+  )
+else:
+  # Scrot should be installed on most systems
+  # Quickstart script makes sure at least one of the two is installed
+  # Not running that script is unsupported behavior (todo?)
+  screenshot = subprocess.run(
+      ["scrot", "-p", "--file", FILE_PATH],
+      shell=False, capture_output=False
+  )
 
 # Fail gracefully-ish
 if screenshot.stderr:
