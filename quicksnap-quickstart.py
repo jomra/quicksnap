@@ -21,6 +21,11 @@ if proceed.lower() != "y":
   print("Aborting.")
   exit()
 
+# Ensure Linux
+if not sys.platform.startswith('linux'):
+  print(sys.stderr, "This script is only compatible with Linux.")
+  exit()
+
 # Ensure dependencies are installed
 if not which("node"):
   print(sys.stderr, "NodeJS is not installed. Please install it before running this script.")
@@ -31,7 +36,7 @@ if not which("npm"):
 if not which("flameshot") and not which("scrot"):
   print(sys.stderr, "Neither Flameshot nor Scrot is not installed. Please install one (Flameshot prefered) before running this script.")
   exit()
-  
+
 # TODO: check if secretstorage is available
 
 # Make app directory if it doesn't exist
