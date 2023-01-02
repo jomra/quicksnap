@@ -37,7 +37,10 @@ if not which("flameshot") and not which("scrot"):
   print(sys.stderr, "Neither Flameshot nor Scrot is not installed. Please install one (Flameshot prefered) before running this script.")
   exit()
 
-# TODO: check if secretstorage is available
+# Check if secretstorage is available
+if not secretstorage.check_service_availability():
+  print(sys.stderr, "SecretStorage is not available. Aborting installation.")
+  exit()
 
 # Make app & screenshot directories if they don't exist
 
@@ -86,7 +89,6 @@ if deps.stderr:
 email = input("\nEnter email: ")
 password = input("Enter password: ")
 
-# TODO: make sure an item with these attributes doesn't already exist
 connection = secretstorage.dbus_init()
 collection = secretstorage.get_default_collection(connection)
 attributes = {'application': 'Quicksnap', 'email': email}
@@ -94,7 +96,19 @@ attributes = {'application': 'Quicksnap', 'email': email}
 try:
   collection.unlock()
 except:
-  print("Failed to unlock collection. Is the keyring unlocked?")
+  print("Failed to unlock collection.")
+  exit()
+
+# Check if item already exists
+items = collection.search_items(attributes)
+try:
+  item = next(items)
+except StopIteration:
+  # Item doesn't exist, everything is fine
+  pass
+else:
+  print("Credentials exist. Did you already run this script?")
+  # TODO: Offer to delete all matching existing items
   exit()
 
 item = collection.create_item('Quicksnap', attributes, password.encode())
