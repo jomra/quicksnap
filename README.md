@@ -15,6 +15,9 @@ The client script itself then can be run with only one click. No authentication,
 
 _\*Flameshot is preferred and supports Wayland. Scrot is more likely to be preinstalled and can capture the user's cursor._
 
+## Removal
+1. [Download](https://raw.githubusercontent.com/jomra/quicksnap/main/client/quicksnap-delete.py) and run `quicksnap-delete.py`
+
 ## Design discussion
 
 ### Limitations
