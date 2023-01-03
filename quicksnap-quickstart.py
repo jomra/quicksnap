@@ -41,7 +41,7 @@ if not which("flameshot") and not which("scrot"):
 # At this point, no flameshot = scrot is installed
 
 if os.getenv("XDG_SESSION_TYPE") == "wayland" and not which("flameshot"):
-  print(sys.stderr, "Scrot generally doesn't work in Wayland sessions. Please install Flameshot or switch to X11.")
+  print(sys.stderr, "Scrot generally doesn't work in Wayland sessions. Please install Flameshot or switch to X11 before running this script.")
   exit()
 
 # Initialize secretstorage and check if it is available
