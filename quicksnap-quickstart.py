@@ -37,8 +37,11 @@ if not which("flameshot") and not which("scrot"):
   print(sys.stderr, "Neither Flameshot nor Scrot is not installed. Please install one (Flameshot prefered) before running this script.")
   exit()
 
-# Check if secretstorage is available
-if not secretstorage.check_service_availability():
+# Initialize secretstorage and check if it is available
+connection = secretstorage.dbus_init()
+collection = secretstorage.get_default_collection(connection)
+
+if not secretstorage.check_service_availability(connection):
   print(sys.stderr, "SecretStorage is not available. Aborting installation.")
   exit()
 
@@ -88,9 +91,6 @@ if deps.stderr:
 # Store credentials
 email = input("\nEnter email: ")
 password = input("Enter password: ")
-
-connection = secretstorage.dbus_init()
-collection = secretstorage.get_default_collection(connection)
 attributes = {'application': 'Quicksnap', 'email': email}
 
 try:
