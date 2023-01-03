@@ -5,6 +5,7 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import { readFileSync, unlinkSync } from 'fs';
 import { spawn } from 'child_process';
+import { resolve } from "path";
 let email, password, fileName, filePath;
 
 const firebaseConfig = {
@@ -20,7 +21,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Run qs-snap.py to get credentials & screenshot file path
-const pythonProcess = spawn('python', ["qs-snap.py"]);
+// Use absolute path
+const pythonProcess = spawn('python', [resolve("qs-snap.py")]);
 
 pythonProcess.stdout.on('data', (data) => {
   main(data); // No need to await here
