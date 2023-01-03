@@ -1,7 +1,7 @@
 # Get the credentials & take a screenshot
 # This script is meant to be run from qs-upload.js
 # Python includes secretstorage support, and Firebase supports JS, so it's easier to separate the two scripts
-# Actually taking the screenshot with scrot is done with here for no particular reason
+# Actually taking the screenshot with scrot/flameshot is done with here for no particular reason
 # Copyright 2022 John Sarbak
 
 import os, sys, secretstorage, time, subprocess
@@ -47,7 +47,7 @@ connection.close()
 if which("flameshot"):
   screenshot = subprocess.run(
     ["flameshot", "full", "-p", FILE_PATH],
-    shell=False, capture_output=False
+    shell=False, capture_output=True
   )
 else:
   # Scrot should be installed on most systems
@@ -55,13 +55,14 @@ else:
   # Not running that script is unsupported behavior (todo?)
   screenshot = subprocess.run(
       ["scrot", "-p", "--file", FILE_PATH],
-      shell=False, capture_output=False
+      shell=False, capture_output=True
   )
 
 # Fail gracefully-ish
-if screenshot.stderr:
-  print("There was a problem. Details: " + screenshot.stderr)
-  exit()
+# if screenshot.stderr:
+#   print("There was a problem. Details: " + screenshot.stderr.decode())
+#   exit()
+# TODO: doesn't work with flameshot. Bug upstream?
 
 # Output credentials, plus file name and path
 print(email + "\n" + password + "\n" + FILE_NAME + "\n" + FILE_PATH)
