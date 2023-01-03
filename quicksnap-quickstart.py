@@ -34,7 +34,14 @@ if not which("npm"):
   print(sys.stderr, "NPM is not installed. Please install it before running this script.")
   exit()
 if not which("flameshot") and not which("scrot"):
-  print(sys.stderr, "Neither Flameshot nor Scrot is not installed. Please install one (Flameshot prefered) before running this script.")
+  print(sys.stderr, "Neither Flameshot nor Scrot is installed. Please install one (Flameshot prefered) before running this script.")
+  exit()
+
+# Ensure we're not attempting to use scrot with wayland
+# At this point, no flameshot = scrot is installed
+
+if os.getenv("XDG_SESSION_TYPE") == "wayland" and not which("flameshot"):
+  print(sys.stderr, "Scrot generally doesn't work in Wayland sessions. Please install Flameshot or switch to X11.")
   exit()
 
 # Initialize secretstorage and check if it is available
