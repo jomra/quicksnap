@@ -22,7 +22,7 @@ const app = initializeApp(firebaseConfig);
 
 // Run qs-snap.py to get credentials & screenshot file path
 // Use absolute path
-const pythonProcess = spawn('python', [resolve("qs-snap.py")]);
+const pythonProcess = spawn('python3', [resolve("qs-snap.py")]);
 
 pythonProcess.stdout.on('data', (data) => {
   main(data); // No need to await here
