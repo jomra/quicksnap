@@ -19,15 +19,33 @@
       <!-- JS -->
     </section>
     <hr>
+    <h2>Solus installation</h2>
+    <span>For Solus users, paste the following into a terminal window.<br><i>Please be careful when running wget and executing unknown programs.</i></span>
+      <section class = "codeBlock">
+        <button class = "copyButton" onclick="copyToClipboard(this)">Copy</button>
+        <code>
+          sudo eopkg it nodejs npm flameshot -y<br>
+          wget https://raw.githubusercontent.com/jomra/quicksnap/main/quicksnap-quickstart.py<br>
+          python3 quicksnap-quickstart.py
+        </code>
+      </section>
     <h2>info</h2>
-    <a href="https://github.com/jomra/quicksnap">get the client</a><br>
+    <a href="https://github.com/jomra/quicksnap">Github</a> - code and installation instructions<br><br>
     <span>Quicksnap is <b>pre-alpha software</b> and under active development</span>
   </main>
 
 </body>
 
 <script>
-
+  async function copyToClipboard(element) {
+    let text = element.nextElementSibling.innerText;
+    text = text.replace(/[^\S\n]{2,}/g, "");
+    await navigator.clipboard.writeText(text);
+    element.textContent = "Copied!";
+    setTimeout(() => {
+      element.textContent = "Copy";
+    }, 1000);
+  }
 </script>
 
 </html>

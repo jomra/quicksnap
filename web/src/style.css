@@ -22,3 +22,23 @@ img {
 img.logo {
   width: 100px;
 }
+
+.codeBlock {
+  background: #f8f8f8;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.copyButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+code {
+  display: block;
+  font-size: 1.2em;
+}
