@@ -1,8 +1,11 @@
-# Get the credentials & take a screenshot
-# This script is meant to be run from qs-upload.js
-# Python includes secretstorage support, and Firebase supports JS, so it's easier to separate the two scripts
-# Actually taking the screenshot with scrot/flameshot is done with here for no particular reason
-# Copyright 2022 John Sarbak
+"""
+Get the credentials & take a screenshot
+This script is meant to be run from quicksnap-client.js
+Python includes secretstorage support, and Firebase supports JS, so it's easier to separate the two scripts
+Actually taking the screenshot with scrot/flameshot is done with here for no particular reason
+Copyright 2022-2023 John Sarbak
+Licensed under the Mozilla Public License 2.0
+"""
 
 import os, sys, secretstorage, time, subprocess
 from shutil import which

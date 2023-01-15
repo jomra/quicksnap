@@ -1,7 +1,13 @@
-// Import the functions you need from the SDKs you need
+/*
+ * Main client script for Quicksn.app
+ * This script runs qs-snap.py to get credentials and screenshot file path, then uploads screenshot to Firebase Storage
+ * quicksnap-quickstart.py should be run first to get credentials and install dependencies
+ * Copyright 2022-2023 John Sarbak
+ * Licensed under the Mozilla Public License 2.0
+ */
+
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import { readFileSync, unlinkSync } from 'fs';
 import { spawn } from 'child_process';
