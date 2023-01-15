@@ -95,10 +95,9 @@ if deps.stderr:
   exit()
 
 
-# Store credentials
-email = input("\nEnter email: ")
-password = input("Enter password: ")
-attributes = {'application': 'Quicksnap', 'email': email}
+# Get ready to store credentials
+
+attributesToSearch = {'application': 'Quicksnap'}
 
 try:
   collection.unlock()
@@ -107,19 +106,34 @@ except:
   exit()
 
 # Check if item already exists
-items = collection.search_items(attributes)
+items = collection.search_items(attributesToSearch)
 try:
   item = next(items)
 except StopIteration:
   # Item doesn't exist, everything is fine
   pass
 else:
-  print("Credentials exist. Did you already run this script?")
-  # TODO: Offer to delete all matching existing items
-  exit()
+  # Item exists, offer to delete it (and any others that match)
+  confirmDeleteCredentials = input("\nCredentials already exist and must be removed to install Quicksn.app. Delete them? [y/n] ")
+  if confirmDeleteCredentials.lower() == "y":
+    try:
+      while item is not None:  # Exits when StopIteration is raised
+        item.delete()
+        item = next(items)
+    except StopIteration:
+      # Exit the loop; everything has been deleted
+      print("Deleted credentials.")
+  else:
+    print("Aborting.")
+    exit()
 
+# Get credentials
+email = input("\nEnter email: ")
+password = input("Enter password: ")
+
+# Store credentials
+attributes = {'application': 'Quicksnap', 'email': email}
 item = collection.create_item('Quicksnap', attributes, password.encode())
-
 connection.close()
 
 # Create .desktop file
