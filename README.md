@@ -31,5 +31,7 @@ This is easier for everyone. And given that you shouldn't be reusing your passwo
 ### Why not use AppImage/Flatpak/Snap?
 Given the utter simplicity of this tool, and the assumption that the installer has the skills requisite to run a simple installation script, at this point running any sort of CI or build process is overkill.
 
+Still, Flatpak support is on the radar, if only to ease dependency management and enable automatic updates.
+
 ## Credits
 Icon created by Dall-e
