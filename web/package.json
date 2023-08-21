@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "firebase": "^9.15.0"
+    "firebase": "^10.2.0"
   },
   "devDependencies": {
     "buffer": "^5.7.1",
