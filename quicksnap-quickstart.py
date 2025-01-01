@@ -11,7 +11,7 @@ import os, sys
 
 print("\nHi there!")
 print("\nBefore using this script, ensure...")
-print("\t* You have created a Quicksn.app account (https://quicksn.app)")
+print("\t* You have created a Quicksn.app account (https://quicksnapp.netlify.app)")
 print("\t* nodejs, npm, and flameshot (or at least scrot) are installed on the system")
 print("\nQuicksn.app is licensed under the Mozilla Public License 2.0. THERE IS NO WARRANTY!\n")
 
